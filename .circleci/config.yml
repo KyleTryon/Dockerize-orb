@@ -3,7 +3,7 @@ orbs:
   dockerize: sandbox/dockerize@dev:0.0.1
 
 jobs:
-  notifytest:
+  build:
     docker: 
       - image: circleci/node
       - image: circleci/mysql
