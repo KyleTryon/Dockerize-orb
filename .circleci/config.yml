@@ -6,8 +6,8 @@ jobs:
   build:
     docker: 
       - image: circleci/node
-      - image: circleci/mysql
+      - image: circleci/postgres
     steps:
       - run: exit 0 #toggle this to force success or status for testing
       - dockerize/wait:
-          service: mysql
+          service: postgres
