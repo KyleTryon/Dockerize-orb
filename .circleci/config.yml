@@ -10,4 +10,4 @@ jobs:
     steps:
       - run: exit 0 #toggle this to force success or status for testing
       - dockerize/wait:
-          service: postgres
+          service: tcp://127.0.0.1:5432
