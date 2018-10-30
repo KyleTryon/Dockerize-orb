@@ -9,4 +9,5 @@ jobs:
       - image: circleci/mysql
     steps:
       - run: exit 0 #toggle this to force success or status for testing
-      - dockerize/wait
+      - dockerize/wait:
+          service: mysql
