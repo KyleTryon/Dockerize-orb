@@ -1,0 +1,12 @@
+version: 2.1
+orbs:
+  dockerize: sandbox/dockerize@dev:0.0.1
+
+jobs:
+  notifytest:
+    docker: 
+      - image: circleci/node
+      - image: circleci/mysql
+    steps:
+      - run: exit 0 #toggle this to force success or status for testing
+      - dockerize/wait

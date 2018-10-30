@@ -1,0 +1,40 @@
+version: 2.1
+
+orbs:
+description: Easily wait for a database before proceeding.
+commands:
+  wait:
+    description: Wait for database
+    parameters:
+      version:
+        description: Specify Dockerize version. Default is '0.3.0'
+        type: string
+        default: "3.0"
+      service:
+        description: specify the URL for the database or simply enter the name of the service. Check readme for default supported services.
+        type: string
+        default: "http://localhost:80"
+      timeout:
+        description: Optionally set timeout in minutes. (default 1)
+        type: string
+        default: "1"
+  steps:
+      - run: 
+          name: Wait for service
+          command: |
+            wget https://github.com/jwilder/dockerize/releases/download/v<<parameter.version>>/dockerize-linux-amd64-v<<parameter.version>>.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v<<parameter.version>>.tar.gz && rm dockerize-linux-amd64-v<<parameter.version>>.tar.gz
+            case "<<parameters.service>>" in
+              mysql|MySQL|mariadb|mariaDB)
+                $DOCKERIZE_SERVICE="tcp://127.0.0.1:3306"
+                ;;
+              postgres|Postgres)
+                $DOCKERIZE_SERVICE="tcp://127.0.0.1:5432"
+                ;;
+              mongo|mongoDB|MongoDB|mongodb)
+                $DOCKERIZE_SERVICE="tcp://localhost:27017"
+                ;;
+              *)
+                $DOCKERIZE_SERVICE="<<parameters.service>>"
+                ;;
+            esac
+            echo <<parameters.service>> $DOCKERIZE_SERVICE
