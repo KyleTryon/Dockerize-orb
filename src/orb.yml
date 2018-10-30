@@ -7,11 +7,11 @@ commands:
     description: Wait for database
     parameters:
       version:
-        description: Specify Dockerize version. Default is '0.3.0'
+        description: Specify Dockerize version. Default is '0.6.1'
         type: string
         default: "0.6.1"
       service:
-        description: specify the URL for the database or simply enter the name of the service. Check readme for default supported services.
+        description: Specify the URL for the database or simply enter the name of the service. Check readme for default supported services.
         type: string
         default: "http://localhost:80"
       timeout:
