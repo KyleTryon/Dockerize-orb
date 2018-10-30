@@ -9,7 +9,7 @@ commands:
       version:
         description: Specify Dockerize version. Default is '0.3.0'
         type: string
-        default: "3.0"
+        default: "0.6.1"
       service:
         description: specify the URL for the database or simply enter the name of the service. Check readme for default supported services.
         type: string
