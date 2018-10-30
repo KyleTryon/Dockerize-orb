@@ -30,3 +30,13 @@ Service:
 
 Timeout:
   - Optionally set timeout in seconds. (default 60)
+
+## Services
+
+Rather than entering the full connection string manually (ex: `tcp://127.0.0.1:5432`), these services can be entered by name.
+
+- MongoDB
+- MySQL
+- Postgres
+
+Please feel free to suggest others.
