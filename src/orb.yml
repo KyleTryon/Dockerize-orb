@@ -15,9 +15,9 @@ commands:
         type: string
         default: "http://localhost:80"
       timeout:
-        description: Optionally set timeout in minutes. (default 1)
+        description: Optionally set timeout in seconds. (default 60)
         type: string
-        default: "1"
+        default: "60"
     steps:
         - run: 
             name: Wait for service
@@ -38,3 +38,4 @@ commands:
                   ;;
               esac
               echo "<<parameters.service>> value is $DOCKERIZE_SERVICE"
+              dockerize -wait $DOCKERIZE_SERVICE -timeout <<parameters.timeout>>s
