@@ -22,7 +22,7 @@ commands:
         - run: 
             name: Wait for service
             command: |
-              wget https://github.com/jwilder/dockerize/releases/download/v<<parameters.version>>/dockerize-linux-amd64-v<<parameters.version>>.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v<<parameters.version>>.tar.gz && rm dockerize-linux-amd64-v<<parameters.version>>.tar.gz
+              wget https://github.com/jwilder/dockerize/releases/download/v<<parameters.version>>/dockerize-linux-amd64-v<<parameters.version>>.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v<<parameters.version>>.tar.gz && rm dockerize-linux-amd64-v<<parameters.version>>.tar.gz && echo "Dockerize installed"
               case "<<parameters.service>>" in
                 mysql|MySQL|mariadb|mariaDB)
                   $DOCKERIZE_SERVICE="tcp://127.0.0.1:3306"
@@ -37,4 +37,4 @@ commands:
                   $DOCKERIZE_SERVICE="<<parameters.service>>"
                   ;;
               esac
-              echo <<parameters.service>> $DOCKERIZE_SERVICE
+              echo "<<parameters.service>> value is $DOCKERIZE_SERVICE"
